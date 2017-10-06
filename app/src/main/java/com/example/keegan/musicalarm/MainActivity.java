@@ -2,6 +2,7 @@ package com.example.keegan.musicalarm;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.widget.TextClock;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -9,5 +10,9 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        TextClock alarm = (TextClock) findViewById(R.id.alarmClock);
+
+
     }
 }
