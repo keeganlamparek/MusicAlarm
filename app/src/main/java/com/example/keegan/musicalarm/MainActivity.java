@@ -2,9 +2,14 @@ package com.example.keegan.musicalarm;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextClock;
+import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -12,7 +17,17 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         TextClock alarm = (TextClock) findViewById(R.id.alarmClock);
+        Button setAlarm = (Button) findViewById(R.id.setAlarmBtn);
+        final EditText editTime = (EditText) findViewById(R.id.editTime);
 
+        setAlarm.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                String alarmTime = editTime.getText().toString();
+                Toast.makeText(MainActivity.this, alarmTime, Toast.LENGTH_LONG).show();
+
+            }
+        });
 
     }
 }
