@@ -2,4 +2,5 @@
     <string name="app_name">MusicAlarm</string>
     <string name="alarmBtn">Set Alarm</string>
     <string name="hintTxt">Enter Time</string>
+    <string name="hintMusicTxt">Select Song</string>
 </resources>
