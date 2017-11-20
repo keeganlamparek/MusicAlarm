@@ -6,4 +6,5 @@
     <color name="primary_material_light_1">#191719</color>
     <color name="primary_dark_material_light">#000000</color>
     <color name="accent_material_light">#ff5205</color>
+    <color name="accent_text_color">#adafb2</color>
 </resources>

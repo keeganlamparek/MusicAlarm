@@ -1,5 +1,6 @@
 package com.example.keegan.musicalarm;
 
+import android.support.v4.app.DialogFragment;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -23,11 +24,15 @@ public class MainActivity extends AppCompatActivity {
         setAlarm.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String alarmTime = editTime.getText().toString();
-                Toast.makeText(MainActivity.this, alarmTime, Toast.LENGTH_LONG).show();
+                showTimePickerDialog(view);
 
             }
         });
 
+    }
+
+    public void showTimePickerDialog(View v) {
+        DialogFragment newFragment = new TimePickerFragment();
+        newFragment.show(getSupportFragmentManager(), "timePicker");
     }
 }
