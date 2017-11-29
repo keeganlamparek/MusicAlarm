@@ -11,25 +11,36 @@
 
 
     <Button
-        android:id="@+id/button2"
+        android:id="@+id/viewAlarms"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="126dp"
         android:text="View Alarms"
         android:textSize="20sp"
-        tools:layout_editor_absoluteY="319dp"
-        tools:layout_editor_absoluteX="114dp" />
+        tools:layout_constraintRight_creator="1"
+        tools:layout_constraintBottom_creator="1"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        tools:layout_constraintLeft_creator="1"
+        android:layout_marginBottom="275dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintHorizontal_bias="0.473" />
 
     <TextClock
         android:id="@+id/alarmClock"
-        android:layout_width="300dp"
+        android:layout_width="0dp"
         android:layout_height="90dp"
         android:textAlignment="center"
         android:textSize="75sp"
         android:theme="@style/AppTheme"
         android:layout_marginStart="42dp"
-        tools:layout_editor_absoluteY="36dp"
-        tools:layout_editor_absoluteX="42dp" />
+        tools:layout_constraintTop_creator="1"
+        tools:layout_constraintRight_creator="1"
+        android:layout_marginEnd="42dp"
+        app:layout_constraintRight_toRightOf="parent"
+        android:layout_marginTop="36dp"
+        tools:layout_constraintLeft_creator="1"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <Button
         android:id="@+id/setAlarmBtn"
@@ -37,16 +48,23 @@
         android:layout_height="wrap_content"
         android:text="@string/alarmBtn"
         android:textSize="20sp"
-        android:layout_marginStart="126dp"
-        tools:layout_editor_absoluteY="236dp"
-        tools:layout_editor_absoluteX="126dp" />
+        tools:layout_constraintRight_creator="1"
+        tools:layout_constraintBottom_creator="1"
+        app:layout_constraintBottom_toTopOf="@+id/viewAlarms"
+        android:layout_marginEnd="11dp"
+        app:layout_constraintRight_toRightOf="@+id/viewAlarms"
+        android:layout_marginBottom="35dp" />
 
     <Button
         android:id="@+id/button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/hintMusicTxt"
-        tools:layout_editor_absoluteY="404dp"
-        tools:layout_editor_absoluteX="135dp" />
+        tools:layout_constraintTop_creator="1"
+        tools:layout_constraintRight_creator="1"
+        android:layout_marginEnd="20dp"
+        app:layout_constraintRight_toRightOf="@+id/viewAlarms"
+        android:layout_marginTop="37dp"
+        app:layout_constraintTop_toBottomOf="@+id/viewAlarms" />
 
 </android.support.constraint.ConstraintLayout>

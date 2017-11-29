@@ -23,7 +23,6 @@ public class TimePickerFragment extends DialogFragment
         final Calendar c = Calendar.getInstance();
         int hour = c.get(Calendar.HOUR_OF_DAY);
         int minute = c.get(Calendar.MINUTE);
-        int ampm = c.get(Calendar.AM_PM);
 
         return new TimePickerDialog(getActivity(), this, hour, minute, DateFormat.is24HourFormat(getActivity()));
     }
@@ -34,7 +33,7 @@ public class TimePickerFragment extends DialogFragment
             AMPM = "PM";
         else
             AMPM = "AM";
-        Toast.makeText(this.getActivity(), hour + ":" + minute + " " + AMPM, Toast.LENGTH_LONG).show();
+        Toast.makeText(this.getActivity(), (hour%12) + ":" + minute + " " + AMPM, Toast.LENGTH_LONG).show();
     }
 
 }
