@@ -33,6 +33,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 //open to activity with all alarms listed and able to edit whether they are on or not
+                startActivity(new Intent(MainActivity.this, SpotifyActivity.class));
             }
         });
 
