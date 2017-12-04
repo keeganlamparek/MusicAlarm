@@ -6,4 +6,35 @@
     android:layout_height="match_parent"
     tools:context="com.example.keegan.musicalarm.SpotifyActivity">
 
+    <ImageButton
+        android:id="@+id/next"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:srcCompat="@android:drawable/ic_media_next"
+        tools:layout_editor_absoluteX="287dp"
+        tools:layout_editor_absoluteY="383dp" />
+
+    <ImageButton
+        android:id="@+id/previous"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:srcCompat="@android:drawable/ic_media_previous"
+        tools:layout_editor_absoluteX="43dp"
+        tools:layout_editor_absoluteY="383dp" />
+
+    <ImageButton
+        android:id="@+id/play"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:srcCompat="@android:drawable/ic_media_play"
+        tools:layout_editor_absoluteX="204dp"
+        tools:layout_editor_absoluteY="383dp" />
+
+    <ImageButton
+        android:id="@+id/pause"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:srcCompat="@android:drawable/ic_media_pause"
+        tools:layout_editor_absoluteX="120dp"
+        tools:layout_editor_absoluteY="383dp" />
 </android.support.constraint.ConstraintLayout>
