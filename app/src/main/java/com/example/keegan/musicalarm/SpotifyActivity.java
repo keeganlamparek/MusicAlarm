@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.webkit.WebView;
 import android.widget.Button;
 import android.widget.ImageButton;
 
@@ -25,7 +26,7 @@ public class SpotifyActivity extends Activity implements
     private static final String CLIENT_ID = "f676d3943abf4325ab9e7aec2518b2dd";
     private static final String redirect_URI = "musicalarm://callback";
 
-    private ImageButton play, pause, next, previous;
+    private WebView webView;
     private Player mPlayer;
     private static final int REQUEST_CODE = 1337;
 
@@ -34,46 +35,16 @@ public class SpotifyActivity extends Activity implements
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_spotify);
 
-        play = findViewById(R.id.play);
-        pause = findViewById(R.id.pause);
-        next = findViewById(R.id.next);
-        previous = findViewById(R.id.previous);
-
         AuthenticationRequest.Builder builder = new AuthenticationRequest.Builder(CLIENT_ID, AuthenticationResponse.Type.TOKEN,
                                                                                     redirect_URI);
+
+        webView = (WebView)findViewById(R.id.spotify);
+        webView.loadUrl("https://play.spotify.com");
 
         builder.setScopes(new String[] {"user-read-private", "streaming"});
         AuthenticationRequest request = builder.build();
 
         AuthenticationClient.openLoginActivity(this, REQUEST_CODE, request);
-
-        play.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                mPlayer.resume(null);
-            }
-        });
-
-        pause.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                mPlayer.pause(null);
-            }
-        });
-
-        next.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                mPlayer.skipToNext(null);
-            }
-        });
-
-        previous.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                mPlayer.skipToPrevious(null);
-            }
-        });
     }
 
     @Override
