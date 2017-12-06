@@ -34,6 +34,7 @@ public class TimePickerFragment extends DialogFragment
         else
             AMPM = "AM";
         Toast.makeText(this.getActivity(), (hour%12) + ":" + minute + " " + AMPM, Toast.LENGTH_LONG).show();
+        Alarm.setAlarm(hour, minute);
     }
 
 }
