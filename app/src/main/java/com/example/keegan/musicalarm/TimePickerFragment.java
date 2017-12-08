@@ -1,9 +1,11 @@
 package com.example.keegan.musicalarm;
 
 
+import android.app.AlarmManager;
 import android.app.Dialog;
+import android.app.PendingIntent;
+import android.content.Context;
 import android.content.Intent;
-import android.provider.AlarmClock;
 import android.support.v4.app.DialogFragment;
 import android.app.TimePickerDialog;
 import java.util.Calendar;
@@ -18,6 +20,10 @@ import android.widget.Toast;
  */
 public class TimePickerFragment extends DialogFragment
                                     implements TimePickerDialog.OnTimeSetListener{
+
+
+    private AlarmManager alarmMgr;
+    private PendingIntent alarmIntent;
 
 
     @Override
@@ -36,11 +42,19 @@ public class TimePickerFragment extends DialogFragment
         else
             AMPM = "AM";
         Toast.makeText(this.getActivity(), (hour%12) + ":" + minute + " " + AMPM, Toast.LENGTH_LONG).show();
-        Intent i = new Intent(AlarmClock.ACTION_SET_ALARM);
-        i.putExtra(AlarmClock.EXTRA_HOUR, hour);
-        i.putExtra(AlarmClock.EXTRA_MINUTES, minute);
-        i.putExtra(AlarmClock.EXTRA_MESSAGE, "This is your alarm");
-        startActivity(i);
+
+        alarmMgr = (AlarmManager)getContext().getSystemService(Context.ALARM_SERVICE);
+        Intent intent = new Intent(getContext(), AlarmReceiver.class);
+        alarmIntent = PendingIntent.getBroadcast(getContext(), 0, intent, 0);
+
+// Set the alarm to start at 8:30 a.m.
+        Calendar calendar = Calendar.getInstance();
+        calendar.setTimeInMillis(System.currentTimeMillis());
+        calendar.set(Calendar.HOUR_OF_DAY, hour);
+        calendar.set(Calendar.MINUTE, minute);
+
+        alarmMgr.setInexactRepeating(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis(),
+                AlarmManager.INTERVAL_DAY, alarmIntent);
     }
 
 }

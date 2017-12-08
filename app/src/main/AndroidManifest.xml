@@ -3,7 +3,8 @@
     package="com.example.keegan.musicalarm">
     
     <uses-permission android:name="android.permission.INTERNET"/>
-    <uses-permission android:name="com.android.alarm.permission.SET_ALARM"/>
+
+    <receiver android:name=".AlarmReceiver" />
 
     <application
         android:allowBackup="true"
