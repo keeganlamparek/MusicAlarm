@@ -2,6 +2,8 @@ package com.example.keegan.musicalarm;
 
 
 import android.app.Dialog;
+import android.content.Intent;
+import android.provider.AlarmClock;
 import android.support.v4.app.DialogFragment;
 import android.app.TimePickerDialog;
 import java.util.Calendar;
@@ -34,7 +36,11 @@ public class TimePickerFragment extends DialogFragment
         else
             AMPM = "AM";
         Toast.makeText(this.getActivity(), (hour%12) + ":" + minute + " " + AMPM, Toast.LENGTH_LONG).show();
-        Alarm.setAlarm(hour, minute);
+        Intent i = new Intent(AlarmClock.ACTION_SET_ALARM);
+        i.putExtra(AlarmClock.EXTRA_HOUR, hour);
+        i.putExtra(AlarmClock.EXTRA_MINUTES, minute);
+        i.putExtra(AlarmClock.EXTRA_MESSAGE, "This is your alarm");
+        startActivity(i);
     }
 
 }

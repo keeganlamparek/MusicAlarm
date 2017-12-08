@@ -3,8 +3,7 @@
     package="com.example.keegan.musicalarm">
     
     <uses-permission android:name="android.permission.INTERNET"/>
-
-    <receiver android:name=".AlarmReceiver" />
+    <uses-permission android:name="com.android.alarm.permission.SET_ALARM"/>
 
     <application
         android:allowBackup="true"
@@ -20,7 +19,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".SpotifyActivity"></activity>
+        <activity android:name=".SpotifyActivity"/>
         <activity
             android:name="com.spotify.sdk.android.authentication.LoginActivity"
             android:theme="@android:style/Theme.Translucent.NoTitleBar"/>
