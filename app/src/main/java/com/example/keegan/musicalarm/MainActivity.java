@@ -20,20 +20,12 @@ public class MainActivity extends AppCompatActivity {
 
         TextClock alarm = (TextClock) findViewById(R.id.alarmClock);
         Button setAlarm = (Button) findViewById(R.id.setAlarmBtn);
-        Button viewAlarms = (Button) findViewById(R.id.viewAlarms);
+
 
         setAlarm.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 showTimePickerDialog(view);
-            }
-        });
-
-        viewAlarms.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                //open to activity with all alarms listed and able to edit whether they are on or not
-                startActivity(new Intent(MainActivity.this, SpotifyActivity.class));
             }
         });
 

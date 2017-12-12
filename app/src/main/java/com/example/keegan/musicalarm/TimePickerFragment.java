@@ -43,18 +43,21 @@ public class TimePickerFragment extends DialogFragment
             AMPM = "AM";
         Toast.makeText(this.getActivity(), (hour%12) + ":" + minute + " " + AMPM, Toast.LENGTH_LONG).show();
 
-        alarmMgr = (AlarmManager)getContext().getSystemService(Context.ALARM_SERVICE);
+        alarmMgr = (AlarmManager) getContext().getSystemService(Context.ALARM_SERVICE);
         Intent intent = new Intent(getContext(), AlarmReceiver.class);
-        alarmIntent = PendingIntent.getBroadcast(getContext(), 0, intent, 0);
+        alarmIntent = PendingIntent.getBroadcast(getContext().getApplicationContext(), 0, intent, 0);
 
 // Set the alarm to start at 8:30 a.m.
         Calendar calendar = Calendar.getInstance();
         calendar.setTimeInMillis(System.currentTimeMillis());
         calendar.set(Calendar.HOUR_OF_DAY, hour);
         calendar.set(Calendar.MINUTE, minute);
+        calendar.set(Calendar.SECOND, 0);
 
-        alarmMgr.setInexactRepeating(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis(),
-                AlarmManager.INTERVAL_DAY, alarmIntent);
+        alarmMgr.set(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis(),
+                alarmIntent);
+
+        getContext().startActivity(new Intent(getContext(), ChooseSong.class));
     }
 
 }

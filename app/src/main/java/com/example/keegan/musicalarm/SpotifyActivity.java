@@ -1,7 +1,9 @@
 package com.example.keegan.musicalarm;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -28,7 +30,8 @@ public class SpotifyActivity extends Activity implements
 
     private Player mPlayer;
     private static final int REQUEST_CODE = 1337;
-    private boolean isPlaying = false;
+
+    private String uri;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,30 +41,25 @@ public class SpotifyActivity extends Activity implements
         AuthenticationRequest.Builder builder = new AuthenticationRequest.Builder(CLIENT_ID, AuthenticationResponse.Type.TOKEN,
                                                                                     redirect_URI);
 
-        Button playBtn = (Button) findViewById(R.id.playPauseBtn);
+        SharedPreferences sharedPreferences = getSharedPreferences("songChoice", MODE_PRIVATE);
+        uri = sharedPreferences.getString("alarmSound", "spotify:track:2TpxZ7JUBn3uw46aR7qd6V");
 
-        playBtn.setOnClickListener(new View.OnClickListener() {
+        Button stopAlarm = (Button) findViewById(R.id.stopAlarmBtn);
+
+        stopAlarm.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(isPlaying) {
-                    mPlayer.pause(new Player.OperationCallback() {
-                        @Override
-                        public void onError(Error error) {
+                mPlayer.pause(new Player.OperationCallback() {
+                    @Override
+                    public void onSuccess() {
 
-                        }
+                    }
 
-                        @Override
-                        public void onSuccess() {
+                    @Override
+                    public void onError(Error error) {
 
-                        }
-                    });
-
-                    isPlaying = false;
-                }
-                else {
-                    mPlayer.playUri(null, "spotify:track:2TpxZ7JUBn3uw46aR7qd6V", 0, 0);
-                    isPlaying = true;
-                }
+                    }
+                });
             }
         });
 
@@ -125,7 +123,7 @@ public class SpotifyActivity extends Activity implements
     @Override
     public void onLoggedIn() {
         Log.d("Spotify Activity", "User logged in");
-
+        mPlayer.playUri(null, uri, 0, 0);
     }
 
     @Override

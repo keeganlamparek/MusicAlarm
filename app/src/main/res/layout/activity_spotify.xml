@@ -9,12 +9,12 @@
     tools:layout_editor_absoluteX="0dp">
 
     <Button
-        android:id="@+id/playPauseBtn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="95dp"
-        android:layout_marginLeft="141dp"
-        android:text="Play/Pause"
+        android:id="@+id/stopAlarmBtn"
+        android:layout_width="124dp"
+        android:layout_height="40dp"
+        android:layout_marginBottom="239dp"
+        android:layout_marginLeft="130dp"
+        android:text="@string/stopAlarm"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent" />
 </android.support.constraint.ConstraintLayout>
