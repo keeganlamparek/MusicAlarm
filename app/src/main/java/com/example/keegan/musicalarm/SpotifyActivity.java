@@ -26,9 +26,9 @@ public class SpotifyActivity extends Activity implements
     private static final String CLIENT_ID = "f676d3943abf4325ab9e7aec2518b2dd";
     private static final String redirect_URI = "musicalarm://callback";
 
-    private WebView webView;
     private Player mPlayer;
     private static final int REQUEST_CODE = 1337;
+    private boolean isPlaying = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,8 +38,32 @@ public class SpotifyActivity extends Activity implements
         AuthenticationRequest.Builder builder = new AuthenticationRequest.Builder(CLIENT_ID, AuthenticationResponse.Type.TOKEN,
                                                                                     redirect_URI);
 
-        webView = (WebView)findViewById(R.id.spotify);
-        webView.loadUrl("https://play.spotify.com");
+        Button playBtn = (Button) findViewById(R.id.playPauseBtn);
+
+        playBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(isPlaying) {
+                    mPlayer.pause(new Player.OperationCallback() {
+                        @Override
+                        public void onError(Error error) {
+
+                        }
+
+                        @Override
+                        public void onSuccess() {
+
+                        }
+                    });
+
+                    isPlaying = false;
+                }
+                else {
+                    mPlayer.playUri(null, "spotify:track:2TpxZ7JUBn3uw46aR7qd6V", 0, 0);
+                    isPlaying = true;
+                }
+            }
+        });
 
         builder.setScopes(new String[] {"user-read-private", "streaming"});
         AuthenticationRequest request = builder.build();
@@ -101,7 +125,7 @@ public class SpotifyActivity extends Activity implements
     @Override
     public void onLoggedIn() {
         Log.d("Spotify Activity", "User logged in");
-        mPlayer.playUri(null, "spotify:track:2TpxZ7JUBn3uw46aR7qd6V", 0, 0);
+
     }
 
     @Override

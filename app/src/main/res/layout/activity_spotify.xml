@@ -8,10 +8,13 @@
     tools:layout_editor_absoluteY="25dp"
     tools:layout_editor_absoluteX="0dp">
 
-    <WebView
-        android:id="@+id/spotify"
-        android:layout_width="344dp"
-        android:layout_height="551dp"
-        tools:layout_editor_absoluteX="8dp"
-        tools:layout_editor_absoluteY="8dp" />
+    <Button
+        android:id="@+id/playPauseBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="95dp"
+        android:layout_marginLeft="141dp"
+        android:text="Play/Pause"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent" />
 </android.support.constraint.ConstraintLayout>
